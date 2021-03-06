@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stocker.Web", "Stocker.Web\Stocker.Web.csproj", "{7AEA9F06-9FEF-4AC9-A4DA-903D5FD74B24}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stocker.Web", "Stocker.Web\Stocker.Web.csproj", "{7AEA9F06-9FEF-4AC9-A4DA-903D5FD74B24}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlphaVantage.Connect", "AlphaVantage.Connect\AlphaVantage.Connect.csproj", "{0DCA9B38-E19F-4F36-9EDD-546ADA6154FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlphaVantage.Connect.Tests", "AlphaVantage.Connect.Tests\AlphaVantage.Connect.Tests.csproj", "{CC1455FB-33D4-479D-81B2-82FF65CB955E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{7AEA9F06-9FEF-4AC9-A4DA-903D5FD74B24}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7AEA9F06-9FEF-4AC9-A4DA-903D5FD74B24}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7AEA9F06-9FEF-4AC9-A4DA-903D5FD74B24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DCA9B38-E19F-4F36-9EDD-546ADA6154FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DCA9B38-E19F-4F36-9EDD-546ADA6154FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DCA9B38-E19F-4F36-9EDD-546ADA6154FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DCA9B38-E19F-4F36-9EDD-546ADA6154FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC1455FB-33D4-479D-81B2-82FF65CB955E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC1455FB-33D4-479D-81B2-82FF65CB955E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC1455FB-33D4-479D-81B2-82FF65CB955E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC1455FB-33D4-479D-81B2-82FF65CB955E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
