@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "antd@4.13.1",
+      "destination": "lib/antd/"
+    }
+  ]
+}
