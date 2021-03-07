@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\IEXCloud.Connect\IEXCloud.Connect.csproj" />
+    <ProjectReference Include="..\YahooFinance.Connect\YahooFinance.Connect.csproj" />
   </ItemGroup>
 
 </Project>
