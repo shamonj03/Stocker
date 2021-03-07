@@ -61,17 +61,17 @@ namespace YahooFinance.Connect.Models
         [JsonProperty("dataGranularity")]
         private string dataGranularity { get; set; }
 
-        public Lookback DataGranularity => dataGranularity.GetLookback();
+        public Interval DataGranularity => dataGranularity.GetEnumFromDisplayName<Interval>();
 
         [JsonProperty("range")]
         private string range { get; set; }
 
-        public Lookback Range => range.GetLookback();
+        public Lookback Range => range.GetEnumFromDisplayName<Lookback>();
 
         [JsonProperty("validRanges")]
         private List<string> validRanges { get; set; }
 
-        public List<Lookback> ValidRanges => validRanges.Select(x => x.GetLookback()).ToList();
+        public List<Lookback> ValidRanges => validRanges.Select(x => x.GetEnumFromDisplayName<Lookback>()).ToList();
 
         public List<QuoteLine> Lines { get; set; }
 

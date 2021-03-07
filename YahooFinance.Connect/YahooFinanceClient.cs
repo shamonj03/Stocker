@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Web;
 using YahooFinance.Connect.Infrastructure;
 using YahooFinance.Connect.Interfaces;
 using YahooFinance.Connect.Models;
@@ -26,7 +27,22 @@ namespace YahooFinance.Connect
         {
             using(var client = _httpCleintFactory.CreateClient(ClientName))
             {
-                var response = await client.GetAsync($"{Url}/{symbol}?region=US&lang=en-US&includePrePost=false&interval=1mo&useYfid=true&range=5y&corsDomain=finance.yahoo.com&.tsrc=finance");
+
+                //	https://query1.finance.yahoo.com/v8/finance/chart/GME?symbol=GME&period1=1519884000&period2=1615080418&useYfid=true&interval=1d&includePrePost=true&events=div|split|earn&lang=en-US&region=US&crumb=y08y8mtMTNG&corsDomain=finance.yahoo.com
+                var query = HttpUtility.ParseQueryString(string.Empty);
+                query.Add("region", "US");
+                query.Add("lang", "en-US");
+                query.Add("corsDomain", "finance.yahoo.com");
+                query.Add("includePrePost", "false");
+                query.Add(".tsrc", "finance");
+                query.Add("useYfid", "true");
+
+                query.Add("period1", "1519884000");
+                query.Add("period2", "1615080418");
+                query.Add("interval", "1mo");
+                query.Add("range", "5y");
+
+                var response = await client.GetAsync($"{Url}/{symbol}?{query}");
 
                 if (!response.IsSuccessStatusCode)
                     response.EnsureSuccessStatusCode();

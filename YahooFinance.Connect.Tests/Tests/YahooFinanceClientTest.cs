@@ -8,7 +8,7 @@ namespace YahooFinance.Connect.Tests.Tests
 {
     public class YahooFinanceClientTest : IClassFixture<YahooFinanceClientFixture>
     {
-        private ServiceProvider _serviceProvider;
+        private readonly ServiceProvider _serviceProvider;
 
         public YahooFinanceClientTest(YahooFinanceClientFixture fixture)
         {
@@ -29,7 +29,7 @@ namespace YahooFinance.Connect.Tests.Tests
         [InlineData(Lookback.OneMinute, "1m")]
         public void Lookback_Convert_To_String_Test(Lookback lookback, string expected)
         {
-            var actual = lookback.GetString();
+            var actual = lookback.GetDisplayNameFromEnum();
 
             Assert.Equal(expected, actual);
         }
@@ -38,7 +38,7 @@ namespace YahooFinance.Connect.Tests.Tests
         [InlineData(Lookback.OneMinute, "1m")]
         public void String_Convert_To_LookBack_Test(Lookback expected, string lookback)
         {
-            var actual = lookback.GetLookback();
+            var actual = lookback.GetEnumFromDisplayName<Lookback>();
 
             Assert.Equal(expected, actual);
         }
