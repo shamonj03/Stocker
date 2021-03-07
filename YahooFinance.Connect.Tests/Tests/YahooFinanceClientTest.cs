@@ -26,7 +26,7 @@ namespace YahooFinance.Connect.Tests.Tests
         }
 
         [Theory]
-        [InlineData(Lookback.OneMinute, "1m")]
+        [InlineData(Lookback.OneYear, "1y")]
         public void Lookback_Convert_To_String_Test(Lookback lookback, string expected)
         {
             var actual = lookback.GetDisplayNameFromEnum();
@@ -35,7 +35,7 @@ namespace YahooFinance.Connect.Tests.Tests
         }
 
         [Theory]
-        [InlineData(Lookback.OneMinute, "1m")]
+        [InlineData(Lookback.OneYear, "1y")]
         public void String_Convert_To_LookBack_Test(Lookback expected, string lookback)
         {
             var actual = lookback.GetEnumFromDisplayName<Lookback>();

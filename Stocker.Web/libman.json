@@ -5,6 +5,16 @@
     {
       "library": "antd@4.13.1",
       "destination": "lib/antd/"
+    },
+    {
+      "provider": "unpkg",
+      "library": "chart.js@2.9.4",
+      "destination": "lib/chart.js/"
+    },
+    {
+      "provider": "unpkg",
+      "library": "react-chartjs-2@2.11.1",
+      "destination": "lib/react-chartjs-2/"
     }
   ]
 }
