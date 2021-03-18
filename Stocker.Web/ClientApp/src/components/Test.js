@@ -2,66 +2,94 @@ import React, { Component } from 'react';
 
 import { Button } from 'antd';
 
-import { Bar } from 'react-chartjs-2';
-
-
-
-const data = {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-    datasets: [
-        {
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)',
-            ],
-            borderWidth: 1,
-        },
-    ],
-}
-
-const options = {
-    scales: {
-        yAxes: [
-            {
-                ticks: {
-                    beginAtZero: true,
-                },
-            },
-        ],
-    },
-}
+import { Line } from 'react-chartjs-2';
 
 export class Test extends Component {
-  static displayName = Test.name;
+    static displayName = Test.name;
+
+    constructor(props) {
+        super(props);
+        this.state = { forecasts: [], loading: true };
+    }
+
+    componentDidMount() {
+        this.populateWeatherData();
+    }
+
+    async populateWeatherData() {
+        const response = await fetch('stock/GME');
+        const data = await response.json();
+
+        console.log(data);
+        this.setState({ forecasts: data, loading: false });
+    }
 
     render() {
+
+        var forecasts = this.state.forecasts;
+
+        var data = {};
+        var options = {};
+
+        if (!this.state.loading) {
+            data = {
+                labels: forecasts.lines.map(f => (new Date(f.timeStamp).toLocaleDateString('en-US'))),
+                datasets: [
+                    {
+                        label: "Open",
+                        data: forecasts.lines.map(f => (f.open)),
+                        fill: false,
+                        backgroundColor: 'red',
+                        borderColor: 'red',
+                    },
+                    {
+                        label: "Close",
+                        data: forecasts.lines.map(f => (f.close)),
+                        fill: false,
+                        backgroundColor: 'blue',
+                        borderColor: 'blue',
+                    },
+                    {
+                        label: "Low",
+                        data: forecasts.lines.map(f => (f.low)),
+                        fill: false,
+                        backgroundColor: 'orange',
+                        borderColor: 'orange',
+                    },
+                    {
+                        label: "High",
+                        data: forecasts.lines.map(f => (f.high)),
+                        fill: false,
+                        backgroundColor: 'green',
+                        borderColor: 'green',
+                    }
+                ]
+            };
+
+            options = {
+                title: {
+                    display: true,
+                    text: forecasts.symbol
+                },
+                tooltips: {
+                    mode: 'index'
+                }
+            }
+        }
+
         return (<>
             <div className='header'>
-                <h1 className='title'>Vertical Bar Chart</h1>
+                <h1 className='title'>Line Chart</h1>
                 <div className='links'>
                     <a
                         className='btn btn-gh'
-                        href='https://github.com/reactchartjs/react-chartjs-2/blob/react16/example/src/charts/VerticalBar.js'
+                        href='https://github.com/reactchartjs/react-chartjs-2/blob/react16/example/src/charts/Line.js'
                     >
                         Github Source
         </a>
                 </div>
             </div>
-            <Bar data={data} options={options} />
+            <Line data={data} options={options} />
         </>
     )
   }
